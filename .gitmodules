@@ -1,0 +1,6 @@
+[submodule "zjsStake/lib/openzeppelin-contracts"]
+	path = zjsStake/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "zjsStake/lib/openzeppelin-contracts-upgradeable"]
+	path = zjsStake/lib/openzeppelin-contracts-upgradeable
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable
