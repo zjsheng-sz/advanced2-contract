@@ -286,7 +286,7 @@ contract ZjsStake is
         uint256 _unstakeLockedBlocks,
         bool _withUpdate
     ) public onlyRole(ADMIN_ROLE) {
-        if (pool.length > 0) {
+        if (pools.length > 0) {
             require(
                 _stTokenAddress != address(0x0),
                 "invalid staking token address"
@@ -366,7 +366,7 @@ contract ZjsStake is
     }
 
     function depositETH() public payable whenNotPaused {
-        Pool storage pool_ = pool[ETH_PID];
+        Pool storage pool_ = pools[ETH_PID];
 
         require(
             pool_.stTokenAddress == address(0x0),
