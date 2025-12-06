@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+import {Test, console} from "forge-std/Test.sol";
 import {Script} from "forge-std/Script.sol";
 import {ZjsStake} from "../src/ZjsStake.sol";
 import {ZjsToken} from "../src/ZjsToken.sol";
@@ -25,10 +26,10 @@ contract DeployZjsStake is Script {
         zjsStake.initialize(
             zjsToken,
             100 * 1e18, // zjsTokenPerBlock
-            1000,       // startBlock
-            2000,       // endBlock
-            admin,      // admin
-            upgrader    // upgrader
+            1000, // startBlock
+            2000, // endBlock
+            admin, // admin
+            upgrader // upgrader
         );
 
         // Stop broadcasting transactions
