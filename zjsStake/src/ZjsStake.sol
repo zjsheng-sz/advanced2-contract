@@ -157,6 +157,32 @@ contract ZjsStake is
         _;
     }
 
+    // ************************************** QUERY FUNCTION **************************************
+
+        /**
+     * @notice Get the withdraw amount info, including the locked unstake amount and the unlocked unstake amount
+     */
+    function withdrawAmount(
+        uint256 _pid,
+        address _user
+    )
+        public
+        view
+        checkPid(_pid)
+        returns (uint256 requestAmount, uint256 pendingWithdrawAmount)
+    {
+        UserInfo storage user_ = userInfo[_pid][_user];
+
+        for (uint256 i = 0; i < user_.unstakeRequests.length; i++) {
+            if (user_.unstakeRequests[i].unlockBlocks <= block.number) {
+                pendingWithdrawAmount =
+                    pendingWithdrawAmount +
+                    user_.unstakeRequests[i].amount;
+            }
+            requestAmount = requestAmount + user_.unstakeRequests[i].amount;
+        }
+    }
+
     // ************************************** INITIALIZER **************************************
     function initialize(
         IERC20 _zjsToken,
